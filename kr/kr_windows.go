@@ -54,7 +54,11 @@ func uninstallCommand(c *cli.Context) (err error) {
 }
 
 func startKrd() (err error) {
-	cmd := exec.Command("cmd.exe", "/C", "start", "/b", `krd.exe`)
+	exe := "krd.exe"
+	if pfx, err := getPrefix(); err == nil {
+		exe = pfx + `\krd.exe`
+	}
+	cmd := exec.Command("cmd.exe", "/C", "start", "/b", exe)
 	return cmd.Run()
 }
 
