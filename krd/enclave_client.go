@@ -1,7 +1,7 @@
 package krd
 
 /*
-*	Facillitates communication with a mobile phone SSH key enclave.
+*	Facilitates communication with a mobile phone SSH key enclave.
  */
 
 import (

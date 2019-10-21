@@ -2,6 +2,7 @@ package main
 
 import (
 	"bytes"
+	"github.com/kryptco/kr"
 	"io/ioutil"
 	"os"
 )
@@ -13,7 +14,7 @@ func replaceKryptoniteWithKrypton(in []byte) []byte {
 }
 
 func upgradeSSHConfig() (err error) {
-	sshDirPath := os.Getenv("HOME") + "/.ssh"
+	sshDirPath := kr.HomeDir() + "/.ssh"
 	_ = os.MkdirAll(sshDirPath, 0700)
 	sshConfigPath := sshDirPath + "/config"
 

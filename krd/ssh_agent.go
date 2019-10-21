@@ -7,18 +7,16 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"net"
-	"strings"
-	"sync"
-	"time"
-	"os"
-
 	"github.com/hashicorp/golang-lru"
 	"github.com/keybase/saltpack/encoding/basex"
 	"github.com/kryptco/kr"
 	"github.com/op/go-logging"
 	"golang.org/x/crypto/ssh"
 	"golang.org/x/crypto/ssh/agent"
+	"net"
+	"strings"
+	"sync"
+	"time"
 )
 
 type sessionIDSig struct {
@@ -30,11 +28,10 @@ type sessionIDSig struct {
 type hostAuthCallback chan *kr.HostAuth
 
 func (a *Agent) withOriginalAgent(do func(agent.Agent)) error {
-	originalAgentSock := os.Getenv("SSH_AUTH_SOCK")
-	if strings.HasSuffix(originalAgentSock, "krd-agent.sock") {
+	conn, err := getOriginalAgentConn()
+	if conn == nil {
 		return nil
 	}
-	conn, err := net.Dial("unix", originalAgentSock)
 	if err != nil {
 		a.log.Error("error connecting to fallbackAgent: " + err.Error())
 		return err

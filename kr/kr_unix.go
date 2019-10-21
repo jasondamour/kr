@@ -1,4 +1,4 @@
-// +build !darwin
+// +build !darwin,!windows
 
 package main
 
@@ -9,6 +9,9 @@ import (
 	"github.com/kryptco/kr"
 	"github.com/urfave/cli"
 )
+
+func initTerminal() {
+}
 
 func restartCommandOptions(c *cli.Context, isUserInitiated bool) (err error) {
 	if isUserInitiated {
