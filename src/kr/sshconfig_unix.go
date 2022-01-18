@@ -11,7 +11,7 @@ import (
 )
 
 func getPrefix() (string, error) {
-	krAbsPath, err := exec.Command("which", "kr").Output()
+	krAbsPath, err := exec.Command("where", "kr").Output()
 	if err != nil {
 		PrintErr(os.Stderr, Red("Krypton ▶ Could not find kr on PATH"))
 		return "", err

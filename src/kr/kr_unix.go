@@ -43,15 +43,15 @@ func openBrowser(url string) {
 }
 
 func hasAptGet() bool {
-	return exec.Command("which", "apt-get").Run() == nil
+	return exec.Command("where", "apt-get").Run() == nil
 }
 
 func hasYum() bool {
-	return exec.Command("which", "yum").Run() == nil
+	return exec.Command("where", "yum").Run() == nil
 }
 
 func hasYaourt() bool {
-	return exec.Command("which", "yaourt").Run() == nil
+	return exec.Command("where", "yaourt").Run() == nil
 }
 
 func uninstallCommand(c *cli.Context) (err error) {

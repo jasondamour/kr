@@ -59,7 +59,7 @@ func codesignCommand(c *cli.Context) (err error) {
 		PrintFatal(stderr, "You do not yet have a PGP public key. Make sure you have the latest version of the Krypton app and try again.")
 	}
 
-	whichKrGPG, err := exec.Command("which", "krgpg").Output()
+	whichKrGPG, err := exec.Command("where", "krgpg").Output()
 	if err != nil {
 		PrintFatal(stderr, "Could not find krgpg: "+err.Error())
 	}
@@ -300,7 +300,7 @@ func checkGitLocation() {
 		return
 	}
 
-	gitLocation, err := exec.Command("which", "git").Output()
+	gitLocation, err := exec.Command("where", "git").Output()
 	if err != nil {
 		PrintFatal(os.Stderr, "`which git` failed, please make sure you have git installed and on your PATH")
 	}
