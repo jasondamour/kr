@@ -37,8 +37,11 @@ const PLIST_TEMPLATE = `<?xml version="1.0" encoding="UTF-8"?>
 </dict>
 </plist>`
 
+func initTerminal() {
+}
+
 func copyPlist() (err error) {
-	output, err := exec.Command("which", "krd").Output()
+	output, err := exec.Command("where", "krd").Output()
 	if err != nil {
 		PrintErr(os.Stderr, Red("Krypton ▶ Could not find krd on PATH, make sure krd is installed"))
 		return
